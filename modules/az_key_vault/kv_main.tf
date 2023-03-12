@@ -22,7 +22,7 @@ resource "azurerm_key_vault" "azkv-name" {
     tenant_id = data.azurerm_client_config.current-config.tenant_id
     object_id = data.azurerm_client_config.current-config.object_id
 
-    key_permissions = ["Create", "Get", "List", "Encrypt", "Update", "Decrypt", "Sign", "UnwrapKey", "Delete", "Purge", "Recover", "Restore", "Backup",
+    key_permissions = ["Create", "Get", "Import", "List", "Encrypt", "Update", "Decrypt", "Sign", "UnwrapKey", "Delete", "Purge", "Recover", "Restore", "Backup",
     "Verify", "Restore", "WrapKey"]
     secret_permissions  = ["Get", "Set", "List", "Delete", "Purge", "Recover", "Restore", "Backup"]
     storage_permissions = ["Get", "List", "Update", "Purge", "Delete", "Set", "Backup"]
@@ -46,10 +46,14 @@ resource "azurerm_key_vault_secret" "win-vm-pswd" {
   ]
 }
 
-data "azurerm_key_vault_secret" "win-vm-pswd" {
-  name         = "win-vm-pswd"
-  key_vault_id = azurerm_key_vault.azkv-name.id
-}
+# data "azurerm_key_vault_secret" "win-vm-pswd" {
+#   name         = "win-vm-pswd"
+#   key_vault_id = azurerm_key_vault.azkv-name.id
+  
+#   timeouts {
+#     read = "10m"
+#   }
+# }
 
 data "azurerm_key_vault" "azkv-name" {
   name                = azurerm_key_vault.azkv-name.name

@@ -1,6 +1,6 @@
 
 output "final_win-vm_pswd" {
-  value     = data.azurerm_key_vault_secret.win-vm-pswd.value
+  value     = azurerm_key_vault_secret.win-vm-pswd.value
   sensitive = true
 }
 

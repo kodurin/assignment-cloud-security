@@ -63,3 +63,32 @@ resource "azurerm_linux_function_app" "app1" {
     }
 
 }
+
+# resource "azurerm_function_app_function" "pyapp" {
+#   name            = "pyapp-function-app-function"
+#   function_app_id = azurerm_linux_function_app.app1.id
+#   language        = "Python"
+#   test_data = jsonencode({
+#     "name" = "Azure"
+#   })
+  
+#   config_json = jsonencode({
+#     "bindings" = [
+#       {
+#         "authLevel" = "function"
+#         "direction" = "in"
+#         "methods" = [
+#           "get",
+#           "post",
+#         ]
+#         "name" = "req"
+#         "type" = "httpTrigger"
+#       },
+#       {
+#         "direction" = "out"
+#         "name"      = "$return"
+#         "type"      = "http"
+#       },
+#     ]
+#   })
+# }
